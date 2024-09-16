@@ -1,0 +1,62 @@
+footer {
+    padding: 70px 15px;
+    background-color: #d0e7ff;
+    /* Light blue background color */
+    color: #333333;
+    /* Dark text color for contrast */
+}
+
+.footer-logo {
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+    font-size: 45px;
+    font-family: 'Lobster', cursive;
+    color: #333333;
+    /* Dark text color */
+    font-weight: 900;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    /* Subtle shadow */
+}
+
+.social-link {
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.social-link a {
+    color: #333333;
+    /* Dark text color */
+    display: inline-block;
+    margin: 0 12px;
+    transition: all 0.5s ease;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    /* Subtle shadow */
+}
+
+.social-link a:hover {
+    color: #000000;
+    /* Darker text color on hover */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    /* Slightly darker shadow on hover */
+}
+
+.copyright {
+    background-color: #c1d9ff;
+    /* Slightly darker light blue */
+    border-top: 1px solid #a0b9e3;
+    padding: 15px;
+}
+
+.copyright p {
+    margin: 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333333;
+    /* Dark text color */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    /* Subtle shadow */
+}
