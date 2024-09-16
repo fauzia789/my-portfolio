@@ -57,6 +57,12 @@
           max-width: 80%; /* Adjust as needed */
         }
       }
+
+      .success-message {
+        color: green;
+        font-weight: bold;
+        margin-top: 20px;
+      }
     </style>
   </head>
   <body>
@@ -75,7 +81,6 @@
               <li><a href="#about">About</a></li>
               <li><a href="#services">Services</a></li>
               <li><a href="#portfolio">Portfolio</a></li>
-              <!-- Removed Testimonials link -->
               <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
@@ -314,7 +319,7 @@
         <div class="row">
           <div class="contact-info">
             <div class="contact-content">
-              <form action="#" method="post">
+              <form id="contactForm" action="#" method="post">
                 <div class="form-group">
                   <label for="name">Name:</label>
                   <input type="text" id="name" name="name" required />
@@ -361,5 +366,18 @@
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
     <script src="./js/main.js"></script>
+    <script>
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent form from submitting normally
+
+          // Display success message
+          document.getElementById("successMessage").style.display = "block";
+
+          // Optionally, you can reset the form fields
+          this.reset();
+        });
+    </script>
   </body>
 </html>
