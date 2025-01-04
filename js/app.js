@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".navbar").classList.toggle("show");
   });
 
-  // Portfolio Gallery
+  // Portfolio Gallery Filter
   const filterBtn = document.querySelector("#filterBtn").children;
   const galleryItems = document.querySelector(".gallery").children;
 
@@ -44,22 +44,31 @@ document.addEventListener("DOMContentLoaded", function () {
       const target = this.getAttribute("data-target");
       for (let k = 0; k < galleryItems.length; k++) {
         galleryItems[k].style.display = "none";
-        if (
-          target == galleryItems[k].getAttribute("data-id") ||
-          target == "all"
-        ) {
+        if (target == galleryItems[k].getAttribute("data-id") || target == "all") {
           galleryItems[k].style.display = "block";
         }
       }
     });
   }
 
+  // Portfolio item click to view project
+  const galleryItemsList = document.querySelectorAll(".gallery .item");
+
+  galleryItemsList.forEach(function (element) {
+    const faPlus = element.querySelector(".fa-plus");
+    faPlus.addEventListener("click", function () {
+      const projectLink = element.querySelector("a");
+      window.open(projectLink.href, "_blank");
+    });
+  });
+
+  // Lightbox functionality
   const closeLightbox = document.querySelector(".close-lightbox");
   const lightbox = document.querySelector(".lightbox");
   const lightboxImg = lightbox.querySelector("img");
 
   lightbox.addEventListener("click", function (event) {
-    if (event.target != lightboxImg) {
+    if (event.target !== lightboxImg) {
       lightbox.classList.remove("show");
       lightbox.classList.add("hide");
     }
@@ -70,38 +79,20 @@ document.addEventListener("DOMContentLoaded", function () {
     lightbox.classList.add("hide");
   });
 
-  const gallery = document.querySelector(".gallery");
-  const galleryItems = document.querySelectorAll(".item");
-
-  galleryItems.forEach(function (element) {
-    element.querySelector(".fa-plus").addEventListener("click", function () {
-      lightbox.classList.remove("hide");
-      lightbox.classList.add("show");
-      lightboxImg.src = element.querySelector("img").getAttribute("src");
-    });
-  });
-
   // Testimonials Slider
   const sliderContainer = document.querySelector(".testimonials-box");
   const sliders = sliderContainer.children;
   const containerWidth = sliderContainer.offsetWidth;
-
   const margin = 30;
   let itemsPerSlide = 0;
   let sliderDots;
 
   const responsive = [
     {
-      breakPoint: {
-        width: 0,
-        item: 1,
-      },
+      breakPoint: { width: 0, item: 1 },
     },
     {
-      breakPoint: {
-        width: 991,
-        item: 2,
-      },
+      breakPoint: { width: 991, item: 2 },
     },
   ];
 
@@ -122,14 +113,13 @@ document.addEventListener("DOMContentLoaded", function () {
       totalWidth += containerWidth / itemsPerSlide;
     }
     sliderContainer.style.width = totalWidth + "px";
-
     sliderDots = Math.ceil(sliders.length / itemsPerSlide);
 
     for (let i = 0; i < sliderDots; i++) {
       const div = document.createElement("div");
       div.id = i;
       div.setAttribute("onclick", "controlSlide(this)");
-      if (i == 0) {
+      if (i === 0) {
         div.classList.add("active");
       }
       document.querySelector(".slider").appendChild(div);
@@ -153,18 +143,18 @@ document.addEventListener("DOMContentLoaded", function () {
       controlButtons[i].classList.remove("active");
     }
     controlButtons[currentSlide].classList.add("active");
-
     sliderContainer.style.marginLeft = -(containerWidth * currentSlide) + "px";
   }
 
   function autoPlay() {
-    if (autoSlide == sliderDots - 1) {
+    if (autoSlide === sliderDots - 1) {
       autoSlide = 0;
     } else {
       autoSlide++;
     }
     changeSlide(autoSlide);
   }
+
   let timer = setInterval(autoPlay, 5000);
 
   window.onload = load();
